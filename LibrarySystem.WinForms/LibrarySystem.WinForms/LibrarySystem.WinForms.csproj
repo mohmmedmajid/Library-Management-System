@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA397B0B-F890-4419-8017-D6480E40A313}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LibrarySystem.WinForms</RootNamespace>
+    <AssemblyName>LibrarySystem.WinForms</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.3\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Pipelines, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.10.0.3\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Json, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Json.10.0.3\lib\net462\System.Net.Http.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.10.0.3\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.10.0.3\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiClient\ApiHelper.cs" />
+    <Compile Include="Forms\Accounting\FrmAccountBalances.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmAccountBalances.Designer.cs">
+      <DependentUpon>FrmAccountBalances.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmAccountTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmAccountTypes.Designer.cs">
+      <DependentUpon>FrmAccountTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmChartOfAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmChartOfAccounts.Designer.cs">
+      <DependentUpon>FrmChartOfAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmCostCenters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmCostCenters.Designer.cs">
+      <DependentUpon>FrmCostCenters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmJournalEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmJournalEntry.Designer.cs">
+      <DependentUpon>FrmJournalEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmJournalEntryDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmJournalEntryDetails.Designer.cs">
+      <DependentUpon>FrmJournalEntryDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmTrialBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounting\FrmTrialBalance.Designer.cs">
+      <DependentUpon>FrmTrialBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmAssetDepreciation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmAssetDepreciation.Designer.cs">
+      <DependentUpon>FrmAssetDepreciation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmFixedAssetCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmFixedAssetCategories.Designer.cs">
+      <DependentUpon>FrmFixedAssetCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmFixedAssets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmFixedAssets.Designer.cs">
+      <DependentUpon>FrmFixedAssets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmMessageTemplates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmMessageTemplates.Designer.cs">
+      <DependentUpon>FrmMessageTemplates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmTaxDeclarations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmTaxDeclarations.Designer.cs">
+      <DependentUpon>FrmTaxDeclarations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmTaxTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Advanced\FrmTaxTypes.Designer.cs">
+      <DependentUpon>FrmTaxTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Auth\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Auth\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\FrmBonuses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\FrmBonuses.Designer.cs">
+      <DependentUpon>FrmBonuses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\FrmDepartments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\FrmDepartments.Designer.cs">
+      <DependentUpon>FrmDepartments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\FrmEmployeeAdvances.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\FrmEmployeeAdvances.Designer.cs">
+      <DependentUpon>FrmEmployeeAdvances.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\FrmEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\FrmEmployees.Designer.cs">
+      <DependentUpon>FrmEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\FrmLateFeeRules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\FrmLateFeeRules.Designer.cs">
+      <DependentUpon>FrmLateFeeRules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\FrmPayroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\FrmPayroll.Designer.cs">
+      <DependentUpon>FrmPayroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\FrmPayrollDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\FrmPayrollDetails.Designer.cs">
+      <DependentUpon>FrmPayrollDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HR\FrmSalaryComponents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HR\FrmSalaryComponents.Designer.cs">
+      <DependentUpon>FrmSalaryComponents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmBarcodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmBarcodes.Designer.cs">
+      <DependentUpon>FrmBarcodes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmBooks.Designer.cs">
+      <DependentUpon>FrmBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmCategories.Designer.cs">
+      <DependentUpon>FrmCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmInventory.Designer.cs">
+      <DependentUpon>FrmInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmInventoryMovements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmInventoryMovements.Designer.cs">
+      <DependentUpon>FrmInventoryMovements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmProducts.Designer.cs">
+      <DependentUpon>FrmProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmStockAdjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inventory\FrmStockAdjust.Designer.cs">
+      <DependentUpon>FrmStockAdjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\FrmAuditLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\FrmAuditLog.Designer.cs">
+      <DependentUpon>FrmAuditLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\FrmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\FrmDashboard.Designer.cs">
+      <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\FrmPaymentMethods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\FrmPaymentMethods.Designer.cs">
+      <DependentUpon>FrmPaymentMethods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\FrmRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\FrmRoles.Designer.cs">
+      <DependentUpon>FrmRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\FrmSettings.Designer.cs">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\FrmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\FrmUsers.Designer.cs">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmCouponDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmCouponDialog.Designer.cs">
+      <DependentUpon>FrmCouponDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmCoupons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmCoupons.Designer.cs">
+      <DependentUpon>FrmCoupons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmDiscountDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmDiscountDialog.Designer.cs">
+      <DependentUpon>FrmDiscountDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmDiscounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmDiscounts.Designer.cs">
+      <DependentUpon>FrmDiscounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmExpenseCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmExpenseCategories.Designer.cs">
+      <DependentUpon>FrmExpenseCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmExpenseCategoryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmExpenseCategoryDialog.Designer.cs">
+      <DependentUpon>FrmExpenseCategoryDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmExpenseDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmExpenseDialog.Designer.cs">
+      <DependentUpon>FrmExpenseDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmExpenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmExpenses.Designer.cs">
+      <DependentUpon>FrmExpenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmPromotionalOfferDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmPromotionalOfferDialog.Designer.cs">
+      <DependentUpon>FrmPromotionalOfferDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmPromotionalOffers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmPromotionalOffers.Designer.cs">
+      <DependentUpon>FrmPromotionalOffers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmPurchaseInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmPurchaseInvoice.Designer.cs">
+      <DependentUpon>FrmPurchaseInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmSupplierDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmSupplierDetail.Designer.cs">
+      <DependentUpon>FrmSupplierDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmSuppliers.Designer.cs">
+      <DependentUpon>FrmSuppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmSupplierTransactionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmSupplierTransactionDialog.Designer.cs">
+      <DependentUpon>FrmSupplierTransactionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmSupplierTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Purchasing\FrmSupplierTransactions.Designer.cs">
+      <DependentUpon>FrmSupplierTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmBorrowReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmBorrowReports.Designer.cs">
+      <DependentUpon>FrmBorrowReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmCustomerReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmCustomerReports.Designer.cs">
+      <DependentUpon>FrmCustomerReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmFinancialReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmFinancialReports.Designer.cs">
+      <DependentUpon>FrmFinancialReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmHRReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmHRReports.Designer.cs">
+      <DependentUpon>FrmHRReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmInventoryReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmInventoryReports.Designer.cs">
+      <DependentUpon>FrmInventoryReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmSalesReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmSalesReports.Designer.cs">
+      <DependentUpon>FrmSalesReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmSupplierReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmSupplierReports.Designer.cs">
+      <DependentUpon>FrmSupplierReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmTaxReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmTaxReports.Designer.cs">
+      <DependentUpon>FrmTaxReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmAllInvoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmAllInvoices.Designer.cs">
+      <DependentUpon>FrmAllInvoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmBookPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmBookPicker.Designer.cs">
+      <DependentUpon>FrmBookPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\Frmborrowinvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\Frmborrowinvoice.Designer.cs">
+      <DependentUpon>Frmborrowinvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmCustomers.Designer.cs">
+      <DependentUpon>FrmCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmCustomerTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmCustomerTransactions.Designer.cs">
+      <DependentUpon>FrmCustomerTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmExchangeInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmExchangeInvoice.Designer.cs">
+      <DependentUpon>FrmExchangeInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmLateFeeDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmLateFeeDetails.Designer.cs">
+      <DependentUpon>FrmLateFeeDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmLateFees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmLateFees.Designer.cs">
+      <DependentUpon>FrmLateFees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmPurchaseInvoiceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmPurchaseInvoiceView.Designer.cs">
+      <DependentUpon>FrmPurchaseInvoiceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmRepcommissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmRepcommissions.Designer.cs">
+      <DependentUpon>FrmRepcommissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmReturnDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmReturnDetails.Designer.cs">
+      <DependentUpon>FrmReturnDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmReturnInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmReturnInvoice.Designer.cs">
+      <DependentUpon>FrmReturnInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmSaleInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmSaleInvoice.Designer.cs">
+      <DependentUpon>FrmSaleInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmSaleInvoiceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmSaleInvoiceView.Designer.cs">
+      <DependentUpon>FrmSaleInvoiceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmSaleReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmSaleReturn.Designer.cs">
+      <DependentUpon>FrmSaleReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmSalesReps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sales\FrmSalesReps.Designer.cs">
+      <DependentUpon>FrmSalesReps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Invoiceprinter.cs" />
+    <Compile Include="Helpers\Journalentryprinter.cs" />
+    <Compile Include="Helpers\MessageHelper.cs" />
+    <Compile Include="Helpers\SessionManager.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
+    <Compile Include="Models\Accounting\AccountBalance.cs" />
+    <Compile Include="Models\Accounting\AccountType.cs" />
+    <Compile Include="Models\Accounting\ChartOfAccount.cs" />
+    <Compile Include="Models\Accounting\CostCenter.cs" />
+    <Compile Include="Models\Accounting\JournalEntry.cs" />
+    <Compile Include="Models\Accounting\JournalEntryDetail.cs" />
+    <Compile Include="Models\Advanced\AssetDepreciation.cs" />
+    <Compile Include="Models\Advanced\FixedAsset.cs" />
+    <Compile Include="Models\Advanced\FixedAssetCategory.cs" />
+    <Compile Include="Models\Advanced\InvoiceTax.cs" />
+    <Compile Include="Models\Advanced\LoginAttempt.cs" />
+    <Compile Include="Models\Advanced\MessageTemplate.cs" />
+    <Compile Include="Models\Advanced\Session.cs" />
+    <Compile Include="Models\Advanced\TaxDeclaration.cs" />
+    <Compile Include="Models\Advanced\TaxType.cs" />
+    <Compile Include="Models\Auth\LoginRequest.cs" />
+    <Compile Include="Models\Auth\LoginResponse.cs" />
+    <Compile Include="Models\Core\AuditLog.cs" />
+    <Compile Include="Models\Core\Category.cs" />
+    <Compile Include="Models\Core\Customer.cs" />
+    <Compile Include="Models\Core\Inventory.cs" />
+    <Compile Include="Models\Core\InventoryMovement.cs" />
+    <Compile Include="Models\Core\PaymentMethod.cs" />
+    <Compile Include="Models\Core\Product.cs" />
+    <Compile Include="Models\Core\Role.cs" />
+    <Compile Include="Models\Core\SystemSetting.cs" />
+    <Compile Include="Models\Core\User.cs" />
+    <Compile Include="Models\DTOs\AccountBalance\GetAccountBalanceDTO.cs" />
+    <Compile Include="Models\DTOs\AccountBalance\GetBalancesByPeriodDTO.cs" />
+    <Compile Include="Models\DTOs\AccountBalance\GetYearToDateDTO.cs" />
+    <Compile Include="Models\DTOs\AccountType\CreateAccountTypeDTO.cs" />
+    <Compile Include="Models\DTOs\AccountType\UpdateAccountTypeDTO.cs" />
+    <Compile Include="Models\DTOs\AssetDepreciation\CreateAssetDepreciationDTO.cs" />
+    <Compile Include="Models\DTOs\AssetDepreciation\GetAllDepreciationsDTO.cs" />
+    <Compile Include="Models\DTOs\AssetDepreciation\GetDepreciationByAssetDTO.cs" />
+    <Compile Include="Models\DTOs\AssetDepreciation\GetDepreciationSummaryDTO.cs" />
+    <Compile Include="Models\DTOs\AssetDepreciation\PostAssetDepreciationDTO.cs" />
+    <Compile Include="Models\DTOs\AssetDepreciation\ProcessMonthlyDepreciationDTO.cs" />
+    <Compile Include="Models\DTOs\AuditLog\CreateAuditLogDTO.cs" />
+    <Compile Include="Models\DTOs\AuditLog\DeleteOldAuditLogsDTO.cs" />
+    <Compile Include="Models\DTOs\AuditLog\GetAllAuditLogsDTO.cs" />
+    <Compile Include="Models\DTOs\AuditLog\GetAuditLogByTableDTO.cs" />
+    <Compile Include="Models\DTOs\AuditLog\GetAuditLogByUserDTO.cs" />
+    <Compile Include="Models\DTOs\Barcode\CreateBarcodeDTO.cs" />
+    <Compile Include="Models\DTOs\Barcode\GetBarcodesByProductDTO.cs" />
+    <Compile Include="Models\DTOs\Barcode\GetProductByBarcodeDTO.cs" />
+    <Compile Include="Models\DTOs\Barcode\UpdateBarcodeDTO.cs" />
+    <Compile Include="Models\DTOs\Bonus\CreateBonusDTO.cs" />
+    <Compile Include="Models\DTOs\Bonus\GetBonusesByEmployeeDTO.cs" />
+    <Compile Include="Models\DTOs\Bonus\UpdateBonusDTO.cs" />
+    <Compile Include="Models\DTOs\Book\CreateBookDTO.cs" />
+    <Compile Include="Models\DTOs\Book\GetAllBooksDTO.cs" />
+    <Compile Include="Models\DTOs\Book\GetBookByProductDTO.cs" />
+    <Compile Include="Models\DTOs\Book\SearchBooksDTO.cs" />
+    <Compile Include="Models\DTOs\Book\UpdateBookDTO.cs" />
+    <Compile Include="Models\DTOs\BorrowingDetail\CreateBorrowingDetailDTO.cs" />
+    <Compile Include="Models\DTOs\BorrowingDetail\CreateReturnWithDetailsDTO.cs" />
+    <Compile Include="Models\DTOs\BorrowingDetail\GetDetailsByBorrowingDTO.cs" />
+    <Compile Include="Models\DTOs\BorrowingDetail\UpdateBorrowingDetailDTO.cs" />
+    <Compile Include="Models\DTOs\BorrowingTransaction\CreateBorrowingTransactionDTO.cs" />
+    <Compile Include="Models\DTOs\BorrowingTransaction\CreateBorrowingWithDetailsDTO.cs" />
+    <Compile Include="Models\DTOs\BorrowingTransaction\GetAllBorrowingsDTO.cs" />
+    <Compile Include="Models\DTOs\BorrowingTransaction\UpdateBorrowingStatusDTO.cs" />
+    <Compile Include="Models\DTOs\BorrowingTransaction\UpdateBorrowingTransactionDTO.cs" />
+    <Compile Include="Models\DTOs\Category\CreateCategoryDTO.cs" />
+    <Compile Include="Models\DTOs\Category\UpdateCategoryDTO.cs" />
+    <Compile Include="Models\DTOs\ChartOfAccount\CreateChartOfAccountDTO.cs" />
+    <Compile Include="Models\DTOs\ChartOfAccount\GetAccountByCodeDTO.cs" />
+    <Compile Include="Models\DTOs\ChartOfAccount\GetAllAccountsDTO.cs" />
+    <Compile Include="Models\DTOs\ChartOfAccount\SearchAccountsDTO.cs" />
+    <Compile Include="Models\DTOs\ChartOfAccount\UpdateAccountBalanceDTO.cs" />
+    <Compile Include="Models\DTOs\ChartOfAccount\UpdateChartOfAccountDTO.cs" />
+    <Compile Include="Models\DTOs\CostCenter\CreateCostCenterDTO.cs" />
+    <Compile Include="Models\DTOs\CostCenter\UpdateCostCenterDTO.cs" />
+    <Compile Include="Models\DTOs\Coupon\CreateCouponDTO.cs" />
+    <Compile Include="Models\DTOs\Coupon\GetAllCouponsDTO.cs" />
+    <Compile Include="Models\DTOs\Coupon\GetCouponByCodeDTO.cs" />
+    <Compile Include="Models\DTOs\Coupon\SaveCouponResponse.cs" />
+    <Compile Include="Models\DTOs\Coupon\UpdateCouponDTO.cs" />
+    <Compile Include="Models\DTOs\Coupon\ValidateCouponDTO.cs" />
+    <Compile Include="Models\DTOs\CustomerTransaction\CreateCustomerTransactionDTO.cs" />
+    <Compile Include="Models\DTOs\CustomerTransaction\GetAllTransactionsDTO.cs" />
+    <Compile Include="Models\DTOs\CustomerTransaction\GetTransactionsByCustomerDTO.cs" />
+    <Compile Include="Models\DTOs\CustomerTransaction\UpdateCustomerTransactionDTO.cs" />
+    <Compile Include="Models\DTOs\Customer\CreateCustomerDTO.cs" />
+    <Compile Include="Models\DTOs\Customer\SearchCustomerDTO.cs" />
+    <Compile Include="Models\DTOs\Customer\UpdateCustomerDTO.cs" />
+    <Compile Include="Models\DTOs\Customer\UpdateCustomerTotalsDTO.cs" />
+    <Compile Include="Models\DTOs\Department\CreateDepartmentDTO.cs" />
+    <Compile Include="Models\DTOs\Department\GetDepartmentsByCostCenterDTO.cs" />
+    <Compile Include="Models\DTOs\Department\UpdateDepartmentDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\CreateDiscountUsageLogDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\GetAllUsageLogsDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\GetTopCouponsDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\GetTopDiscountsDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\GetUsageByCustomerDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\GetUsageByInvoiceDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\GetUsageStatisticsDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\TopCouponResultDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\TopDiscountResultDTO.cs" />
+    <Compile Include="Models\DTOs\DiscountUsageLog\UsageStatisticsResultDTO.cs" />
+    <Compile Include="Models\DTOs\Discount\CreateDiscountDTO.cs" />
+    <Compile Include="Models\DTOs\Discount\GetAllDiscountsDTO.cs" />
+    <Compile Include="Models\DTOs\Discount\GetApplicableDiscountsDTO.cs" />
+    <Compile Include="Models\DTOs\Discount\UpdateDiscountDTO.cs" />
+    <Compile Include="Models\DTOs\EmployeeAdvance\CreateEmployeeAdvanceDTO.cs" />
+    <Compile Include="Models\DTOs\EmployeeAdvance\GetAdvancesByEmployeeDTO.cs" />
+    <Compile Include="Models\DTOs\EmployeeAdvance\UpdateEmployeeAdvanceDTO.cs" />
+    <Compile Include="Models\DTOs\EmployeeSalaryComponent\CreateEmployeeSalaryComponentDTO.cs" />
+    <Compile Include="Models\DTOs\EmployeeSalaryComponent\GetComponentsByEmployeeDTO.cs" />
+    <Compile Include="Models\DTOs\EmployeeSalaryComponent\UpdateEmployeeSalaryComponentDTO.cs" />
+    <Compile Include="Models\DTOs\Employee\CreateEmployeeDTO.cs" />
+    <Compile Include="Models\DTOs\Employee\GetAllEmployeesDTO.cs" />
+    <Compile Include="Models\DTOs\Employee\SearchEmployeesDTO.cs" />
+    <Compile Include="Models\DTOs\Employee\UpdateEmployeeDTO.cs" />
+    <Compile Include="Models\DTOs\ExchangeTransaction\CreateExchangeDTO.cs" />
+    <Compile Include="Models\DTOs\ExpenseCategory\CreateExpenseCategoryDTO.cs" />
+    <Compile Include="Models\DTOs\ExpenseCategory\GetExpenseCategoriesWithTotalsDTO.cs" />
+    <Compile Include="Models\DTOs\ExpenseCategory\UpdateExpenseCategoryDTO.cs" />
+    <Compile Include="Models\DTOs\Expense\ApproveExpenseDTO.cs" />
+    <Compile Include="Models\DTOs\Expense\CreateExpenseDTO.cs" />
+    <Compile Include="Models\DTOs\Expense\GetAllExpensesDTO.cs" />
+    <Compile Include="Models\DTOs\Expense\GetExpenseSummaryDTO.cs" />
+    <Compile Include="Models\DTOs\Expense\UpdateExpenseDTO.cs" />
+    <Compile Include="Models\DTOs\FixedAssetCategory\CreateFixedAssetCategoryDTO.cs" />
+    <Compile Include="Models\DTOs\FixedAssetCategory\GetAllFixedAssetCategoriesDTO.cs" />
+    <Compile Include="Models\DTOs\FixedAssetCategory\UpdateFixedAssetCategoryDTO.cs" />
+    <Compile Include="Models\DTOs\FixedAsset\CreateFixedAssetDTO.cs" />
+    <Compile Include="Models\DTOs\FixedAsset\DisposeFixedAssetDTO.cs" />
+    <Compile Include="Models\DTOs\FixedAsset\GetAllFixedAssetsDTO.cs" />
+    <Compile Include="Models\DTOs\FixedAsset\UpdateFixedAssetDTO.cs" />
+    <Compile Include="Models\DTOs\InventoryMovement\CreateInventoryMovementDTO.cs" />
+    <Compile Include="Models\DTOs\InventoryMovement\GetAllMovementsDTO.cs" />
+    <Compile Include="Models\DTOs\InventoryMovement\GetMovementsByProductDTO.cs" />
+    <Compile Include="Models\DTOs\InventoryMovement\GetMovementsSummaryDTO.cs" />
+    <Compile Include="Models\DTOs\Inventory\SetMinimumLevelDTO.cs" />
+    <Compile Include="Models\DTOs\Inventory\UpdateBorrowedDTO.cs" />
+    <Compile Include="Models\DTOs\Inventory\UpdateStockDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceDetail\CreateInvoiceDetailDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceDetail\GetDetailsByInvoiceDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceDetail\UpdateInvoiceDetailDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceTax\CreateInvoiceTaxDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceTax\GetAllInvoiceTaxesDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceTax\GetInvoiceTaxesByInvoiceDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceTax\GetTaxSummaryDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceTax\UpdateInvoiceTaxDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceType\CreateInvoiceTypeDTO.cs" />
+    <Compile Include="Models\DTOs\InvoiceType\UpdateInvoiceTypeDTO.cs" />
+    <Compile Include="Models\DTOs\Invoice\CreateInvoiceDTO.cs" />
+    <Compile Include="Models\DTOs\Invoice\CreateInvoiceWithDetailsDTO.cs" />
+    <Compile Include="Models\DTOs\Invoice\CreatePurchaseInvoiceWithDetailsDTO.cs" />
+    <Compile Include="Models\DTOs\Invoice\GetAllInvoicesDTO.cs" />
+    <Compile Include="Models\DTOs\Invoice\GetInvoiceByNumberDTO.cs" />
+    <Compile Include="Models\DTOs\Invoice\UpdateInvoiceDTO.cs" />
+    <Compile Include="Models\DTOs\JournalEntryDetail\CreateJournalEntryDetailDTO.cs" />
+    <Compile Include="Models\DTOs\JournalEntryDetail\GetDetailsByAccountDTO.cs" />
+    <Compile Include="Models\DTOs\JournalEntryDetail\UpdateJournalEntryDetailDTO.cs" />
+    <Compile Include="Models\DTOs\JournalEntry\CreateJournalEntryDTO.cs" />
+    <Compile Include="Models\DTOs\JournalEntry\GetAllJournalEntriesDTO.cs" />
+    <Compile Include="Models\DTOs\JournalEntry\PostJournalEntryDTO.cs" />
+    <Compile Include="Models\DTOs\JournalEntry\ReverseJournalEntryDTO.cs" />
+    <Compile Include="Models\DTOs\JournalEntry\UpdateJournalEntryDTO.cs" />
+    <Compile Include="Models\DTOs\LateFeeRule\CreateLateFeeRuleDTO.cs" />
+    <Compile Include="Models\DTOs\LateFeeRule\UpdateLateFeeRuleDTO.cs" />
+    <Compile Include="Models\DTOs\LateFee\CreateLateFeeDTO.cs" />
+    <Compile Include="Models\DTOs\LateFee\GetAllLateFeesDTO.cs" />
+    <Compile Include="Models\DTOs\LateFee\GetLateFeesByCustomerDTO.cs" />
+    <Compile Include="Models\DTOs\LateFee\UpdateLateFeeDTO.cs" />
+    <Compile Include="Models\DTOs\LateFee\UpdateLateFeePaymentDTO.cs" />
+    <Compile Include="Models\DTOs\LateFee\WaiveLateFeeDTO.cs" />
+    <Compile Include="Models\DTOs\LoginAttempt\GetAllLoginAttemptsDTO.cs" />
+    <Compile Include="Models\DTOs\LoginAttempt\GetLoginAttemptsByUsernameDTO.cs" />
+    <Compile Include="Models\DTOs\LoginAttempt\GetLoginStatsDTO.cs" />
+    <Compile Include="Models\DTOs\LoginAttempt\LogLoginAttemptDTO.cs" />
+    <Compile Include="Models\DTOs\MessageTemplate\CreateMessageTemplateDTO.cs" />
+    <Compile Include="Models\DTOs\MessageTemplate\GetAllMessageTemplatesDTO.cs" />
+    <Compile Include="Models\DTOs\MessageTemplate\GetTemplateByCodeDTO.cs" />
+    <Compile Include="Models\DTOs\MessageTemplate\ParseMessageTemplateDTO.cs" />
+    <Compile Include="Models\DTOs\MessageTemplate\UpdateMessageTemplateDTO.cs" />
+    <Compile Include="Models\DTOs\OtherRevenue\CreateOtherRevenueDTO.cs" />
+    <Compile Include="Models\DTOs\OtherRevenue\GetAllRevenuesDTO.cs" />
+    <Compile Include="Models\DTOs\OtherRevenue\GetRevenueSummaryDTO.cs" />
+    <Compile Include="Models\DTOs\OtherRevenue\UpdateOtherRevenueDTO.cs" />
+    <Compile Include="Models\DTOs\PaymentMethod\CreatePaymentMethodDTO.cs" />
+    <Compile Include="Models\DTOs\PaymentMethod\UpdatePaymentMethodDTO.cs" />
+    <Compile Include="Models\DTOs\PayrollDetail\GetDetailsByEmployeeDTO.cs" />
+    <Compile Include="Models\DTOs\PayrollDetail\GetDetailsByPayrollDTO.cs" />
+    <Compile Include="Models\DTOs\Payroll\ApprovePayrollDTO.cs" />
+    <Compile Include="Models\DTOs\Payroll\CreatePayrollDTO.cs" />
+    <Compile Include="Models\DTOs\Payroll\GetAllPayrollsDTO.cs" />
+    <Compile Include="Models\DTOs\Payroll\PostPayrollDTO.cs" />
+    <Compile Include="Models\DTOs\Product\CreateProductDTO.cs" />
+    <Compile Include="Models\DTOs\Product\GetProductByBarcodeDTO.cs" />
+    <Compile Include="Models\DTOs\Product\SearchProductDTO.cs" />
+    <Compile Include="Models\DTOs\Product\UpdateProductDTO.cs" />
+    <Compile Include="Models\DTOs\PromotionalOffer\CreatePromotionalOfferDTO.cs" />
+    <Compile Include="Models\DTOs\PromotionalOffer\GetActiveOffersForProductDTO.cs" />
+    <Compile Include="Models\DTOs\PromotionalOffer\GetAllOffersDTO.cs" />
+    <Compile Include="Models\DTOs\PromotionalOffer\UpdatePromotionalOfferDTO.cs" />
+    <Compile Include="Models\DTOs\RepCommission\CreateRepCommissionDTO.cs" />
+    <Compile Include="Models\DTOs\RepCommission\GetAllCommissionsDTO.cs" />
+    <Compile Include="Models\DTOs\RepCommission\GetCommissionsBySalesRepDTO.cs" />
+    <Compile Include="Models\DTOs\RepCommission\GetUnpaidTotalDTO.cs" />
+    <Compile Include="Models\DTOs\RepCommission\MarkCommissionAsPaidDTO.cs" />
+    <Compile Include="Models\DTOs\RepCommission\UpdateRepCommissionDTO.cs" />
+    <Compile Include="Models\DTOs\ReturnTransaction\CreateReturnTransactionDTO.cs" />
+    <Compile Include="Models\DTOs\ReturnTransaction\GetAllReturnsDTO.cs" />
+    <Compile Include="Models\DTOs\ReturnTransaction\GetReturnByBorrowingDTO.cs" />
+    <Compile Include="Models\DTOs\ReturnTransaction\UpdateReturnTransactionDTO.cs" />
+    <Compile Include="Models\DTOs\RevenueCategory\CreateRevenueCategoryDTO.cs" />
+    <Compile Include="Models\DTOs\RevenueCategory\GetRevenueCategoriesWithTotalsDTO.cs" />
+    <Compile Include="Models\DTOs\RevenueCategory\UpdateRevenueCategoryDTO.cs" />
+    <Compile Include="Models\DTOs\Role\CreateRoleDTO.cs" />
+    <Compile Include="Models\DTOs\Role\UpdateRoleDTO.cs" />
+    <Compile Include="Models\DTOs\SalaryComponent\CreateSalaryComponentDTO.cs" />
+    <Compile Include="Models\DTOs\SalaryComponent\UpdateSalaryComponentDTO.cs" />
+    <Compile Include="Models\DTOs\SaleReturn\CreateSaleReturnDTO.cs" />
+    <Compile Include="Models\DTOs\SaleReturn\PurchaseInvoiceFullDTO.cs" />
+    <Compile Include="Models\DTOs\SaleReturn\Saleinvoicefulldto.cs" />
+    <Compile Include="Models\DTOs\SaleReturn\SearchInvoiceDTOs.cs" />
+    <Compile Include="Models\DTOs\SalesRepresentative\CreateSalesRepresentativeDTO.cs" />
+    <Compile Include="Models\DTOs\SalesRepresentative\GetAllSalesRepsDTO.cs" />
+    <Compile Include="Models\DTOs\SalesRepresentative\UpdateSalesRepresentativeDTO.cs" />
+    <Compile Include="Models\DTOs\SalesRepresentative\UpdateSalesRepTotalsDTO.cs" />
+    <Compile Include="Models\DTOs\Session\CreateSessionDTO.cs" />
+    <Compile Include="Models\DTOs\Session\EndSessionDTO.cs" />
+    <Compile Include="Models\DTOs\Session\GetSessionByTokenDTO.cs" />
+    <Compile Include="Models\DTOs\Session\GetSessionHistoryDTO.cs" />
+    <Compile Include="Models\DTOs\SupplierTransaction\CreateSupplierTransactionDTO.cs" />
+    <Compile Include="Models\DTOs\SupplierTransaction\GetAllSupplierTransactionsDTO.cs" />
+    <Compile Include="Models\DTOs\SupplierTransaction\GetSupplierBalanceDTO.cs" />
+    <Compile Include="Models\DTOs\SupplierTransaction\GetTransactionsBySupplierDTO.cs" />
+    <Compile Include="Models\DTOs\SupplierTransaction\UpdateSupplierTransactionDTO.cs" />
+    <Compile Include="Models\DTOs\Supplier\CreateSupplierDTO.cs" />
+    <Compile Include="Models\DTOs\Supplier\SearchSupplierDTO.cs" />
+    <Compile Include="Models\DTOs\Supplier\UpdateSupplierDTO.cs" />
+    <Compile Include="Models\DTOs\Supplier\UpdateSupplierTotalsDTO.cs" />
+    <Compile Include="Models\DTOs\SystemSetting\UpdateSettingByKeyDTO.cs" />
+    <Compile Include="Models\DTOs\SystemSetting\UpdateSystemSettingDTO.cs" />
+    <Compile Include="Models\DTOs\TaxDeclaration\CreateTaxDeclarationDTO.cs" />
+    <Compile Include="Models\DTOs\TaxDeclaration\GetAllTaxDeclarationsDTO.cs" />
+    <Compile Include="Models\DTOs\TaxDeclaration\PayTaxDeclarationDTO.cs" />
+    <Compile Include="Models\DTOs\TaxDeclaration\SubmitTaxDeclarationDTO.cs" />
+    <Compile Include="Models\DTOs\TaxType\CalculateTaxDTO.cs" />
+    <Compile Include="Models\DTOs\TaxType\CreateTaxTypeDTO.cs" />
+    <Compile Include="Models\DTOs\TaxType\GetAllTaxTypesDTO.cs" />
+    <Compile Include="Models\DTOs\TaxType\GetTaxTypeByCategoryDTO.cs" />
+    <Compile Include="Models\DTOs\TaxType\UpdateTaxTypeDTO.cs" />
+    <Compile Include="Models\DTOs\User\ChangePasswordDTO.cs" />
+    <Compile Include="Models\DTOs\User\CreateUserDTO.cs" />
+    <Compile Include="Models\DTOs\User\LoginDTO.cs" />
+    <Compile Include="Models\DTOs\User\UpdateUserDTO.cs" />
+    <Compile Include="Models\DTOs\User\UserResponseDTO.cs" />
+    <Compile Include="Models\HR\Bonus.cs" />
+    <Compile Include="Models\HR\Department.cs" />
+    <Compile Include="Models\HR\Employee.cs" />
+    <Compile Include="Models\HR\EmployeeAdvance.cs" />
+    <Compile Include="Models\HR\EmployeeSalaryComponent.cs" />
+    <Compile Include="Models\HR\LateFeeRule.cs" />
+    <Compile Include="Models\HR\Payroll.cs" />
+    <Compile Include="Models\HR\PayrollDetail.cs" />
+    <Compile Include="Models\HR\SalaryComponent.cs" />
+    <Compile Include="Models\Purchasing\Coupon.cs" />
+    <Compile Include="Models\Purchasing\Discount.cs" />
+    <Compile Include="Models\Purchasing\DiscountUsageLog.cs" />
+    <Compile Include="Models\Purchasing\Expense.cs" />
+    <Compile Include="Models\Purchasing\ExpenseCategory.cs" />
+    <Compile Include="Models\Purchasing\OtherRevenue.cs" />
+    <Compile Include="Models\Purchasing\PromotionalOffer.cs" />
+    <Compile Include="Models\Purchasing\RevenueCategory.cs" />
+    <Compile Include="Models\Purchasing\Supplier.cs" />
+    <Compile Include="Models\Purchasing\SupplierTransaction.cs" />
+    <Compile Include="Models\Sales\AllInvoiceItem.cs" />
+    <Compile Include="Models\Sales\Barcode.cs" />
+    <Compile Include="Models\Sales\Book.cs" />
+    <Compile Include="Models\Sales\BorrowingDetail.cs" />
+    <Compile Include="Models\Sales\BorrowingTransaction.cs" />
+    <Compile Include="Models\Sales\CustomerTransaction.cs" />
+    <Compile Include="Models\Sales\ExchangeTransaction.cs" />
+    <Compile Include="Models\Sales\Invoice.cs" />
+    <Compile Include="Models\Sales\InvoiceDetail.cs" />
+    <Compile Include="Models\Sales\InvoiceSearchResult.cs" />
+    <Compile Include="Models\Sales\InvoiceType.cs" />
+    <Compile Include="Models\Sales\LateFee.cs" />
+    <Compile Include="Models\Sales\RepCommission.cs" />
+    <Compile Include="Models\Sales\ReturnableInvoiceDetail.cs" />
+    <Compile Include="Models\Sales\ReturnTransaction.cs" />
+    <Compile Include="Models\Sales\SaleReturn.cs" />
+    <Compile Include="Models\Sales\SalesRepresentative.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\ConfirmDialogControl.cs" />
+    <Compile Include="UserControls\LoadingSpinnerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LoadingSpinnerControl.Designer.cs">
+      <DependentUpon>LoadingSpinnerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SearchBoxControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchBoxControl.Designer.cs">
+      <DependentUpon>SearchBoxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StatusBadgeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\StatusBadgeControl.Designer.cs">
+      <DependentUpon>StatusBadgeControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\Accounting\FrmChartOfAccounts.resx">
+      <DependentUpon>FrmChartOfAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Accounting\FrmJournalEntry.resx">
+      <DependentUpon>FrmJournalEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Auth\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\FrmBonuses.resx">
+      <DependentUpon>FrmBonuses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HR\FrmPayrollDetails.resx">
+      <DependentUpon>FrmPayrollDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Inventory\FrmBarcodes.resx">
+      <DependentUpon>FrmBarcodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Inventory\FrmBooks.resx">
+      <DependentUpon>FrmBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Inventory\FrmStockAdjust.resx">
+      <DependentUpon>FrmStockAdjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\FrmAuditLog.resx">
+      <DependentUpon>FrmAuditLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Purchasing\FrmExpenseCategoryDialog.resx">
+      <DependentUpon>FrmExpenseCategoryDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Purchasing\FrmPurchaseInvoice.resx">
+      <DependentUpon>FrmPurchaseInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\FrmHRReports.resx">
+      <DependentUpon>FrmHRReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\FrmTaxReports.resx">
+      <DependentUpon>FrmTaxReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sales\Frmborrowinvoice.resx">
+      <DependentUpon>Frmborrowinvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sales\FrmCustomerTransactions.resx">
+      <DependentUpon>FrmCustomerTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sales\FrmExchangeInvoice.resx">
+      <DependentUpon>FrmExchangeInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sales\FrmReturnInvoice.resx">
+      <DependentUpon>FrmReturnInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sales\FrmSaleInvoice.resx">
+      <DependentUpon>FrmSaleInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UserControls\SearchBoxControl.resx">
+      <DependentUpon>SearchBoxControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Icons\" />
+    <Folder Include="Assets\Images\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+  </Target>
+</Project>
