@@ -1,0 +1,271 @@
+﻿using API_1.DTOs.BorrowingTransaction;
+using API_1.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace API_1.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BorrowingTransactionsController : ControllerBase
+    {
+        private readonly IBorrowingTransactionService _borrowingService;
+
+        public BorrowingTransactionsController(IBorrowingTransactionService borrowingService)
+        {
+            _borrowingService = borrowingService;
+        }
+
+   
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Create([FromBody] CreateBorrowingTransactionDTO dto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                int borrowingId = await _borrowingService.CreateAsync(dto);
+
+                return CreatedAtAction(
+                    nameof(GetById),
+                    new { id = borrowingId },
+                    new { BorrowingID = borrowingId, Message = "Borrowing transaction created successfully" }
+                );
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while creating the borrowing transaction", Details = ex.Message });
+            }
+        }
+
+
+        [HttpPost("with-details")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> CreateWithDetails([FromBody] CreateBorrowingWithDetailsDTO dto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                int borrowingId = await _borrowingService.CreateWithDetailsAsync(dto);
+
+                return CreatedAtAction(
+                    nameof(GetById),
+                    new { id = borrowingId },
+                    new { BorrowingID = borrowingId, Message = "Borrowing transaction with details created successfully" }
+                );
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while creating the borrowing transaction", Details = ex.Message });
+            }
+        }
+
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateBorrowingTransactionDTO dto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                if (id != dto.BorrowingID)
+                    return BadRequest(new { Error = "ID mismatch" });
+
+                bool result = await _borrowingService.UpdateAsync(dto);
+
+                if (!result)
+                    return NotFound(new { Error = "Borrowing transaction not found" });
+
+                return Ok(new { Message = "Borrowing transaction updated successfully" });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { Error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while updating the borrowing transaction", Details = ex.Message });
+            }
+        }
+
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                bool result = await _borrowingService.DeleteAsync(id);
+
+                if (!result)
+                    return NotFound(new { Error = "Borrowing transaction not found" });
+
+                return Ok(new { Message = "Borrowing transaction deleted successfully" });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while deleting the borrowing transaction", Details = ex.Message });
+            }
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetById(int id)
+        {
+            try
+            {
+                var borrowing = await _borrowingService.GetByIdAsync(id);
+
+                if (borrowing == null)
+                    return NotFound(new { Error = "Borrowing transaction not found" });
+
+                return Ok(borrowing);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while retrieving the borrowing transaction", Details = ex.Message });
+            }
+        }
+
+
+        [HttpGet("{id}/with-details")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetWithDetails(int id)
+        {
+            try
+            {
+                var result = await _borrowingService.GetBorrowingWithDetailsAsync(id);
+                return Ok(result);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { Error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while retrieving the borrowing transaction", Details = ex.Message });
+            }
+        }
+
+      
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAll([FromQuery] GetAllBorrowingsDTO dto)
+        {
+            try
+            {
+                var borrowings = await _borrowingService.GetAllAsync(dto);
+                return Ok(borrowings);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while retrieving borrowing transactions", Details = ex.Message });
+            }
+        }
+
+     
+        [HttpGet("active")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetActive()
+        {
+            try
+            {
+                var borrowings = await _borrowingService.GetActiveAsync();
+                return Ok(borrowings);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while retrieving active borrowings", Details = ex.Message });
+            }
+        }
+
+ 
+        [HttpGet("late")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetLate()
+        {
+            try
+            {
+                var borrowings = await _borrowingService.GetLateAsync();
+                return Ok(borrowings);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while retrieving late borrowings", Details = ex.Message });
+            }
+        }
+
+   
+        [HttpPatch("{id}/status")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateBorrowingStatusDTO dto)
+        {
+            try
+            {
+                if (id != dto.BorrowingID)
+                    return BadRequest(new { Error = "ID mismatch" });
+
+                bool result = await _borrowingService.UpdateStatusAsync(dto.BorrowingID, dto.Status);
+
+                if (!result)
+                    return NotFound(new { Error = "Borrowing transaction not found" });
+
+                return Ok(new { Message = "Borrowing status updated successfully" });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = "An error occurred while updating borrowing status", Details = ex.Message });
+            }
+        }
+    }
+}
